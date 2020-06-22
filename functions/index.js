@@ -8,10 +8,6 @@ const utils = require("./utils");
 
 app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Server listening on ${host}:${port}`);
-});
-
 app.get("/", async (req, res) => {
   res.send("App is on");
 });
@@ -35,6 +31,10 @@ app.get("/users", async (req, res) => {
     const admin = users.find((u) => u.username === "admin");
 
     res.send(admin);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening on ${host}:${port}`);
 });
 
 exports.app = functions.https.onRequest(app);
